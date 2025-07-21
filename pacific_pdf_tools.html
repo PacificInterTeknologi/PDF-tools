@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacific PDF Tools</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #10121a;
+      color: #fff;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      color: #e63946;
+    }
+    .card {
+      background: #1c1f2a;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    label, input, button {
+      display: block;
+      margin: 0.5rem 0;
+    }
+    input[type="file"] {
+      color: #ccc;
+    }
+    button {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d62839;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pacific PDF Tools</h1>
+
+  <div class="card">
+    <h2>Gabungkan PDF</h2>
+    <input type="file" id="merge-input" multiple accept="application/pdf">
+    <button onclick="mergePDFs()">Gabungkan</button>
+    <p id="merge-status"></p>
+  </div>
+
+  <div class="card">
+    <h2>Pisahkan PDF</h2>
+    <input type="file" id="split-input" accept="application/pdf">
+    <button onclick="splitPDF()">Pisahkan</button>
+    <p id="split-status"></p>
+  </div>
+
+  <div class="card">
+    <h2>Print dengan Ukuran Kertas</h2>
+    <input type="file" id="print-input" accept="application/pdf">
+    <label for="paper-size">Ukuran Kertas:</label>
+    <select id="paper-size">
+      <option value="A4">A4</option>
+      <option value="Letter">Letter</option>
+      <option value="Legal">Legal</option>
+    </select>
+    <button onclick="printPDF()">Cetak</button>
+  </div>
+
+  <script>
+    function mergePDFs() {
+      document.getElementById('merge-status').innerText = 'Fitur ini masih dalam pengembangan. Gunakan versi desktop untuk merge PDF.';
+    }
+
+    function splitPDF() {
+      document.getElementById('split-status').innerText = 'Fitur ini masih dalam pengembangan. Gunakan versi desktop untuk split PDF.';
+    }
+
+    function printPDF() {
+      const input = document.getElementById('print-input');
+      if (!input.files[0]) {
+        alert('Pilih file PDF terlebih dahulu.');
+        return;
+      }
+      const fileURL = URL.createObjectURL(input.files[0]);
+      const win = window.open(fileURL);
+      win.focus();
+      win.print();
+    }
+  </script>
+</body>
+</html>
